@@ -1,0 +1,146 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Device Authentication API",
+      "version": "1.0.0",
+      "description": "API documentation for device authentication"
+    },
+    "paths": {
+      "/api/scan-qr": {
+        "post": {  
+          "tags": ["Authentication"],
+          "summary": "Scan QR code to generate API key",
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "$ref": "#/definitions/ScanQRResponse"
+              }
+            }
+          },
+          "x-ratelimit": {
+            "rateLimitBy": "ip",
+            "rateLimit": {
+              "windowMs": 60000,
+              "maxRequests": 10,
+              "message": "Too many requests, please try again later."
+            }
+          }
+        }
+      },
+      "/api/refresh-token": {
+        "post": {  
+          "tags": ["Authentication"],
+          "summary": "Refresh JWT token",
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "$ref": "#/definitions/RefreshTokenResponse"
+              }
+            }
+          },
+          "x-ratelimit": {
+            "rateLimitBy":"ip",
+            "rateLimit": {
+              "windowMs": 60000,
+              "maxRequests": 10,
+              "message": "Too many requests, please try again later."
+            }
+          }
+        }
+      },
+      "/api/register-device": {
+        "post": {
+          "tags": ["Device"],
+          "summary": "Self-register device",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "Device Registration",
+              "description": "Device registration details",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/SelfRegisterRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "$ref": "#/definitions/SelfRegisterResponse"
+              }
+            }
+          },
+          "x-ratelimit":{
+            "rateLimitBy": "ip",
+            "rateLimit": {
+              "windowMs": 60000,
+              "maxRequests": 10,
+              "message": "Too many requests, please try again later."
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "ScanQRResponse": {
+        "type": "object",
+        "properties": {
+          "api_auth_url": {
+            "type": "string"
+          },
+          "authentication_reference": {
+            "type": "string"
+          },
+          "authentication_key": {
+            "type": "string"
+          }
+        }
+      },
+      "RefreshTokenResponse": {
+        "type": "object",
+        "properties": {
+          "authentication_key": {
+            "type": "string"
+          }
+        }
+      },
+      "SelfRegisterRequest": {
+        "type": "object",
+        "properties": {
+          "agent_name": {
+            "type": "string"
+          },
+          "device_type": {
+            "type": "string"
+          },
+          "device_make": {
+            "type": "string"
+          },
+          "device_os": {
+            "type": "string"
+          },
+          "device_os_version": {
+            "type": "string"
+          },
+          "imei_numbers": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "SelfRegisterResponse": {
+        "type": "object",
+        "properties": {
+          "device_reference": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  

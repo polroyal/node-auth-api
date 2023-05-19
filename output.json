@@ -1,0 +1,242 @@
+{
+  "Recipient": {
+    "add": {
+      "recipient_first_name": "Wellington",
+      "recipient_second_name": "Mugendi",
+      "recipient_last_name": "Ngari",
+      "recipient_phone_code": "44",
+      "recipient_phone_number": "7775834768"
+    },
+    "update": {
+      "recipient_reference": "001",
+      "recipient_first_name": "Wellington",
+      "recipient_second_name": "Mugendi",
+      "recipient_last_name": "Ngari",
+      "recipient_phone_code": "44",
+      "recipient_phone_number": "7775834768"
+    }
+  },
+  "Group": {
+    "add": {
+      "group_name": "GLOBAL"
+    },
+    "update": {
+      "group_reference": "001",
+      "group_name": "GLOBAL"
+    }
+  },
+  "RecipientToGroup": {
+    "add": {
+      "recipient_reference": "001",
+      "group_reference": "001"
+    },
+    "remove": {
+      "recipient_reference": "001",
+      "group_reference": "001"
+    },
+    "suspend": {
+      "recipient_reference": "001",
+      "group_reference": "001"
+    }
+  },
+  "Telecom": {
+    "add": {
+      "telecom_name": "Safaricom",
+      "telecom_country_codes": [
+        254
+      ],
+      "telecom_prefixes": [
+        702,
+        703
+      ]
+    },
+    "update": {
+      "telecom_reference": "001",
+      "telecom_name": "Safaricom",
+      "telecom_country_codes": [
+        254
+      ],
+      "telecom_prefixes": [
+        702,
+        703
+      ]
+    }
+  },
+  "GatewayAgent": {
+    "add": {
+      "agent_name": "DC1 Backup",
+      "device_type": "tablet",
+      "device_make": "Huawei gp56",
+      "device_os": "android",
+      "device_os_version": "Jelly 5.2",
+      "imei_numbers": [
+        2323344544232334
+      ]
+    },
+    "update": {
+      "agent_reference": "001",
+      "agent_name": "DC1 Backup",
+      "device_type": "tablet",
+      "device_make": "Huawei gp56",
+      "device_os": "android",
+      "device_os_version": "Jelly 5.2",
+      "imei_numbers": [
+        2323344544232334
+      ]
+    },
+    "suspend": {
+      "agent_reference": "001"
+    },
+    "remove": {
+      "agent_reference": "001"
+    }
+  },
+  "AgentTelecomCarrierAssignment": {
+    "add": {
+      "agent_reference": "001",
+      "telecom_reference": "001",
+      "imei_number": 2323344544232334
+    },
+    "update": {
+      "agent_telecom_carrier_reference": "001",
+      "imei_number": 2323344544232334,
+      "agent_reference": "001",
+      "telecom_reference": "001"
+    },
+    "update_credits": {
+      "agent_telecom_carrier_reference": "001",
+      "sms_transaction_type": "DEBIT|CREDIT",
+      "sms_quantity": "3000"
+    },
+    "suspend": {
+      "agent_telecom_carrier_reference": "001"
+    },
+    "remove": {
+      "agent_telecom_carrier_reference": "001"
+    }
+  },
+  "MessageTemplate": {
+    "add": {
+      "messsage": "Dear {{recipient_first_name}}, thanks for accessing our services.",
+      "template_fields": {
+        "service_name": "Set Service Name",
+        "service_termination_date": "set a cancellation date"
+      },
+      "start_date": "2023-03-12",
+      "end_date": "2023-04-14"
+    },
+    "update": {
+      "template_reference": "001",
+      "messsage": "Dear {{recipient_first_name}}, thanks for accessing our services.",
+      "template_fields": {
+        "service_name": "Set Service Name",
+        "service_termination_date": "set a cancellation date"
+      },
+      "start_date": "2023-03-12",
+      "end_date": "2023-04-14"
+    },
+    "suspend": {
+      "template_reference": "001"
+    },
+    "remove": {
+      "template_reference": "001"
+    }
+  },
+  "SendSMS": {
+    "toGroupByTemplate": {
+      "group_reference": "001",
+      "template_reference": "001",
+      "template_fields": {
+        "field_one": "Somthing 1",
+        "field_two": "Somethig 2"
+      }
+    },
+    "toGroupCustom": {
+      "group_reference": "001",
+      "custom_message": "Hi. You have been assigned to a group"
+    },
+    "toRecipientByTemplate": {
+      "recipient_reference": "001",
+      "template_reference": "001",
+      "recipient_phone_code": "44",
+      "recipient_phone_number": "7775834768",
+      "template_fields": {
+        "field_one": "Somthing 1",
+        "field_two": "Somethig 2"
+      }
+    },
+    "toRecipientCustom": {
+      "recipient_phone_code": "44",
+      "recipient_phone_number": "7775834768",
+      "custom_message": "Message t recipient"
+    }
+  },
+  "GatewayAgentServices": {
+    "add": {
+      "service_reference": "001",
+      "service_name": "SMS_SEND|SMS_LOG|CALL_LOG",
+      "service_description": "Description"
+    },
+    "update": {
+      "service_reference": "001",
+      "service_name": "SMS_SEND|SMS_LOG|CALL_LOG",
+      "service_description": "Description"
+    },
+    "assign": {
+      "service_reference": "001",
+      "agent_reference": "001"
+    },
+    "suspend": {
+      "service_reference": "001",
+      "agent_reference": "001"
+    },
+    "remove": {
+      "service_reference": "001",
+      "agent_reference": "001"
+    }
+  },
+  "GatewayAgentTasks": {
+    "pullUnsentMessages": {
+      "agent_reference": "001",
+      "agent_telecom_carrier_reference": "001",
+      "imei_number": 2323344544232334,
+      "batch_size": 10
+    },
+    "logMessageStatus": {
+      "agent_reference": "001",
+      "agent_telecom_carrier_reference": "001",
+      "imei_number": 2323344544232334,
+      "recipient_reference": "001",
+      "message_reference": "001",
+      "status_reference": "001",
+      "status_key": "SENT|FAILED|RECEIVED",
+      "status_date": "2023-01-01",
+      "status_time": "00:30"
+    },
+    "pushReceivedMessages": {
+      "agent_reference": "001",
+      "agent_telecom_carrier_reference": "001",
+      "imei_number": 2323344544232334,
+      "recipient_reference": "001",
+      "recipient_phone_code": "44",
+      "recipient_phone_number": "7775834768",
+      "message": "Received Message",
+      "reception_date": "2023-01-01",
+      "reception_time": "00:30"
+    },
+    "pushCallLogs": {
+      "agent_telecom_carrier_reference": "001",
+      "imei_number": 2323344544232334,
+      "recipient_phone_code": "44",
+      "recipient_phone_number": "7775834768",
+      "recipient_reference": "001",
+      "status_key": "OUTGOING|INCOMING",
+      "status_date": "2023-01-01",
+      "status_time": "00:30"
+    }
+  }
+}
+
+
+
+
